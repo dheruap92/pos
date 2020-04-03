@@ -42,8 +42,9 @@
                                         <td>
                                             <?= $value->barcode ?><br />
                                             <a href="<?= site_url("item/barcode_qrcode/" . $value->item_id) ?>" class="btn btn-xs btn-default">
-                                                Generator <i class="fa fa-barcode"></i>
-                                            </a>
+                                                Generator <i class="fa fa-barcode"></i> <i class="fa fa-qrcode"></i>
+                                            </a><br>
+                                            <a href="<?= site_url("item/barcode_print/" . $value->item_id) ?>" class="btn btn-sm btn-icon btn-default" target="_blank"><i class="fa fa-print"></i></a>
                                         </td>
                                         <td><?= $value->name ?></td>
                                         <td><?= $value->category_name ?></td>

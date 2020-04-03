@@ -166,4 +166,11 @@ class item extends CI_Controller
         $data['page'] = "Tampil";
         $this->template->load("template_view", 'product/item/barcode_qrcode', $data);
     }
+
+    function barcode_print($id)
+    {
+        $data['row'] = $this->item->get($id)->row();
+        $html = $this->load->view("product/item/barcode_print", $data, true);
+        $this->fungsi->PdfGenerator($html, 'coba', 'A4', "landscape");
+    }
 }

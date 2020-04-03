@@ -20,12 +20,13 @@
                 <div class="card-body">
                     <div class="row justify-content-lg-center">
                         <div class="col-12 col-md-12 col-lg-12">
+
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-12">
                             <?php
                             $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
                             echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->barcode, $generator::TYPE_CODE_128)) . '">';
-                            ?>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
+                            ?><br />
                             <?= $row->barcode ?>
                         </div>
                     </div>
@@ -44,8 +45,11 @@
                     <div class="row justify-content-lg-center">
                         <div class="col-12 col-md-12 col-lg-12">
                             <?php
-
+                            $qrCode = new Endroid\QrCode\QrCode($row->barcode);
+                            // Save it to a file
+                            $qrCode->writeFile('upload/qrcode/item-' . $row->barcode . '.png');
                             ?>
+                            <img src="<?= base_url("upload/qrcode/item-" . $row->barcode . ".png") ?>" width="200px" alt="Barcode" class="">
                         </div>
                     </div>
                 </div>
